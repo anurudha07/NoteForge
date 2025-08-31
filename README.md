@@ -90,13 +90,19 @@ Backend
 start command:- npm i && npm run build
 run command:-   npm start
 
+
 change .env setup on render
 
- |..|..|..|..|.. Next Frontend (web services) ..|..|..|..|..
+Next Frontend (web services)
+:
+
 NEXT_PUBLIC_API_BASE=https://abc.onrender.com/api
 NEXT_PUBLIC_GOOGLE_AUTH_URL=https://abc.onrender.com/api/auth/google
 
+
 Node Backend (web services)
+:
+
 PORT=4000
 MONGO_URI=your_mongodb_connection_string
 JWT_SECRET=your_jwt_secret_key
@@ -109,13 +115,11 @@ SMTP_USER=your_email@gmail.com
 SMTP_PASS=your_app_password
 FROM_EMAIL=your_email@gmail.com
 
-Google OAuth
 GOOGLE_CLIENT_ID=your_google_client_id
 GOOGLE_CLIENT_SECRET=your_google_client_secret
-GOOGLE_CALLBACK_URL=http://localhost:4000/api/auth/google/callback
+GOOGLE_CALLBACK_URL=https://your_frontend_hosted_url/api/auth/google/callback
 
-Frontend URL
-FRONTEND_URL=http://localhost:3000
+FRONTEND_URL=https://your_frontend_hosted_ur
 
 
 
