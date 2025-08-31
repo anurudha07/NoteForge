@@ -5,6 +5,7 @@ import {
   verifyOtp,
   resendOtp,
   googleCallbackHandler,
+  sendOtpSignup,
 } from '../controllers/authController.js';
 import { requireFields } from '../middleware/validateRequest.js';
 
@@ -12,6 +13,9 @@ const router = express.Router();
 
 // POST /api/auth/send-otp
 router.route('/send-otp').post(requireFields(['email']), sendOtp);
+
+// POST /api/auth/send-otp-signup
+router.route('/send-otp-signup').post(requireFields(['email','name']), sendOtpSignup);
 
 // POST /api/auth/verify-otp
 router.route('/verify-otp').post(requireFields(['email', 'otp']), verifyOtp);

@@ -19,7 +19,8 @@ email:{
     unique: true 
 },
 name:{
-    type: String 
+    type: String,
+    required: true 
 },
 googleId:{ 
     type: String 

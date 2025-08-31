@@ -12,22 +12,43 @@ export default function SignInPage() {
   const router = useRouter();
 
   const sendOtp = async () => {
-    setStatus('');
-    if (!email.trim()) return setStatus('Email is required');
-    setLoading(true);
-    try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_BASE}/auth/send-otp`, { email });
+  setStatus('');
+  if (!email.trim()) return setStatus('Email is required');
+  setLoading(true);
+
+  try {
+    // capture the response explicitly
+    const res = await axios.post(
+      `${process.env.NEXT_PUBLIC_API_BASE}/auth/send-otp`,
+      { email },
+      // optional: ensure axios throws only on network error; we still check status below
+      { validateStatus: () => true }
+    );
+
+    // Debug logging — remove in prod
+    console.log('sendOtp response', res.status, res.data);
+
+    if (res.status === 200) {
+      // success -> redirect to verify
       router.push(`/signup/verify?email=${encodeURIComponent(email)}`);
-    } catch (err: unknown) {
-      if (axios.isAxiosError(err)) {
-        setStatus(err.response?.data?.message ?? 'Failed to send OTP');
-      } else {
-        setStatus('Something went wrong');
-      }
-    } finally {
-      setLoading(false);
+    } else {
+      // not 200 -> show message from server (e.g., 404 User not found)
+      setStatus(res.data?.message || 'Failed to send OTP');
     }
-  };
+  } catch (err: unknown) {
+    // network/axios-level error
+    if (axios.isAxiosError(err)) {
+      console.error('sendOtp axios error', err.response?.status, err.response?.data);
+      setStatus(err.response?.data?.message ?? 'Failed to send OTP');
+    } else {
+      console.error('sendOtp unknown error', err);
+      setStatus('Something went wrong');
+    }
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const googleUrl = process.env.NEXT_PUBLIC_GOOGLE_AUTH_URL || '/api/auth/google';
 
