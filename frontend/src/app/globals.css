@@ -1,0 +1,370 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Theme  */
+:root{
+  --primary: #2563eb;
+  --bg: #f7f8fb;
+  --text: #0f172a;
+
+  --space-xs: 6px;
+  --space-sm: 12px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  --control-height: 48px;
+  --card-radius: 12px;
+  --card-shadow: 0 6px 18px rgba(2,6,23,0.06);
+}
+
+/* Reset / base */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { font-size: 16px; -webkit-text-size-adjust: 100%; height: 100%; }
+body {
+  margin: 0;
+  padding: var(--space-lg);
+  min-height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.45;
+}
+
+/* Card container  */
+.container-card {
+  width: 100%;
+  max-width: 520px;
+  background: #f7f8fb; 
+  border-radius: var(--card-radius);
+  padding: var(--space-lg);
+  box-shadow: none; 
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+/* Page layout helper */
+.page-wrap {
+  display: flex;
+  align-items: flex-start; 
+  justify-content: center;
+  gap: var(--space-lg);
+}
+
+/* Headings */
+.h-page-title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0;
+  text-align: center;
+}
+
+.p-subtitle {
+  margin-top: 6px;
+  color: #334155;
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* FORM STACK */
+.form-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md); 
+  width: 100%;
+  align-items: center; 
+}
+
+
+.form-stack > * { width: 100%; }
+
+/* Inputs / textareas */
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: 1rem;
+  border-radius: 12px;
+  border: 1px solid #e6e9ef;
+  padding: 0.75rem;
+  background: #fff;
+  min-height: var(--control-height);
+  transition: box-shadow .12s ease, border-color .12s ease;
+}
+
+/* focus */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: rgba(37,99,235,0.6);
+  box-shadow: 0 6px 18px rgba(37,99,235,0.06);
+}
+
+/* Primary button */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: var(--control-height);
+  padding: 0 1rem;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 500;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* Disabled */
+.btn-primary:disabled { opacity: 0.7; cursor: not-allowed; }
+
+/* Subtle lift */
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(37,99,235,0.12);
+}
+
+/* Outline/white button for Google */
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  height: var(--control-height);
+  padding: 0 1rem;
+  background: #fff;
+  border: 1px solid #e6e9ef;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: transform .12s ease, box-shadow .12s ease;
+}
+
+/* Google icon container */
+.icon-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  border: 1px solid rgba(0,0,0,0.04);
+}
+
+/* Divider (OR) */
+.form-divider {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: calc(var(--space-sm));
+  margin: 0.25rem 0;
+}
+
+.form-divider hr {
+  flex: 1;
+  height: 1px;
+  border: none;
+  background: #e6e9ef;
+}
+
+.form-divider span {
+  font-size: 0.75rem;
+  color: #9aa3b2;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+/* small helper text row (e.g., signup link) */
+.helper-row {
+  font-size: 0.95rem;
+  text-align: center;
+  margin: 0;
+}
+
+/* error / status text */
+.form-status {
+  font-size: 0.9rem;
+  color: #dc2626;
+  text-align: center;
+}
+
+/* Right side illustration wrapper hidden on mobile */
+.right-side-image { display: none; }
+
+/* md+ layout adjustments */
+@media (min-width: 768px) {
+  body { padding: var(--space-xl); }
+  .page-wrap { align-items: center; }
+  .container-card { padding: var(--space-xl); max-width: 640px; }
+  .form-stack { align-items: stretch; } 
+  .h-page-title { text-align: left; font-size: 1.25rem; }
+  .p-subtitle { text-align: left; }
+  .helper-row { text-align: left; }
+  .right-side-image { display: block; } 
+  .icon-circle { min-width: 48px; height: 48px; }
+}
+
+/* large screens */
+@media (min-width: 1024px) {
+  .container-card { max-width: 720px; padding: 32px; }
+  .h-page-title { font-size: 1.375rem; }
+}
+
+.logo-wrapper {
+  display: flex;
+  flex-direction: row; 
+  align-items: center; 
+  gap: 8px; 
+  margin-bottom: 48px;
+}
+
+/* Dashboard Card */
+
+.dashboard-card {
+  width: 100%;
+  max-width: 450px;
+  background: #fff; /* corrected */
+  border-radius: var(--card-radius, 12px);
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin-top: 15px;
+  margin-bottom: 22px;
+  padding:0%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+
+  /* light outline  */
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.363);
+  justify-content: center;
+  text-align: center;
+}
+
+/* Dashboard cards */
+.note-card {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.15s ease;
+}
+
+.note-card:hover {
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.line-clamp-4 {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+/* ----- NoteForm ----- */
+.noteform-root .field {
+  margin-bottom: 1.25rem; 
+}
+
+/* .noteform-root */
+.noteform-root input,
+.noteform-root textarea {
+  min-height: unset !important;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+  box-sizing: border-box !important;
+}
+
+/* button wrapper spacing */
+.noteform-root .submit-wrap {
+  margin-top: 0.5rem;
+  display: flex;
+  justify-content: center;
+}
+/* ---- NoteForm: lighter-gray focus ( ---- */
+.noteform-root input:focus,
+.noteform-root textarea:focus,
+.noteform-root input:focus-visible,
+.noteform-root textarea:focus-visible {
+  outline: none !important;
+  border-color: #e6e9ef !important;            
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.173) !important; 
+  transition: border-color .14s ease, box-shadow .14s ease;
+}
+/* ===== Notes grid & card layout  ===== */
+
+.notes-grid {
+  box-sizing: border-box !important;
+  display: grid !important;
+  grid-template-columns: repeat(1, 1fr) !important;
+  gap: 24px !important;                 /* spacing between cards */
+  padding-left: 12px !important;
+  padding-right: 28px !important;
+  margin: 0 auto !important;
+  width: 100% !important;
+}
+
+/* responsive columns */
+@media (min-width: 640px)  { .notes-grid { grid-template-columns: repeat(2, 1fr) !important; } }
+@media (min-width: 768px)  { .notes-grid { grid-template-columns: repeat(3, 1fr) !important; } }
+@media (min-width: 1024px) { .notes-grid { grid-template-columns: repeat(5, 1fr) !important; } }
+
+/* Card styling with black border */
+.note-card-custom {
+  position: relative !important;       
+  overflow: visible !important;        
+  box-sizing: border-box !important;
+  display: flex !important;
+  flex-direction: column !important;
+  padding: 18px !important;           
+  min-height: 150px !important;
+  background: #ffffff !important;
+  border-radius: 12px !important;
+  border: 1px solid #000000 !important; 
+  box-shadow: 0 6px 18px rgba(2,6,23,0.04) !important;
+  transition: box-shadow .14s ease, transform .12s ease !important;
+}
+
+/* hover lift */
+.note-card-custom:hover {
+  box-shadow: 0 12px 30px rgba(2,6,23,0.06) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Delete button  */
+.note-delete-btn {
+  position: absolute !important;
+  top: 16px !important;
+  right: -20px !important;            
+  z-index: 70 !important;
+  width: 40px !important;
+  height: 40px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 999px !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  background: #ffffff !important;
+  cursor: pointer !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06) !important;
+  transition: transform .08s ease, background .12s ease, color .12s ease !important;
+}
+
+/* hover & focus states */
+.note-delete-btn:hover { transform: translateY(-2px) !important; background: #fff5f5 !important; color: #dc2626 !important; }
+.note-delete-btn:focus { outline: 3px solid rgba(37,99,235,0.16) !important; outline-offset: 2px !important; }
+
+/* reduce protrusion on very small screens to avoid horizontal scroll */
+@media (max-width: 420px) {
+  .note-delete-btn { right: -12px !important; width: 36px !important; height: 36px !important; top: 12px !important; }
+  .notes-grid { padding-right: 18px !important; gap: 18px !important; padding-left: 10px !important; }
+}
+
+/* defensive re-assertion in case of a global  */
+body .notes-grid { display: grid !important; }
