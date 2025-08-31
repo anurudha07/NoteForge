@@ -24,7 +24,7 @@ NoteForge is a modern, full-stack note-taking app built with Next.js and Node.js
 
 🛠 ----- Tech Stack -----
 
-Frontend  -  Next.js 15 + TypeScript + Tailwind CSS + 
+Frontend  -  Next.js 15 + TypeScript + Tailwind CSS  
 
 Backend   -  Node + Express.js
 
@@ -78,6 +78,8 @@ NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:your_port/api/auth/google
        npm i && npm run build
        npm start
 
+ # Note :-  Also add the hosted URI origin to Credentials -> OAuth 2.0 Client IDs -> https://console.cloud.google.com/
+
 
 
 ----- 🚀 Production Build -----
@@ -120,6 +122,8 @@ GOOGLE_CLIENT_SECRET=your_google_client_secret
 GOOGLE_CALLBACK_URL=https://your_frontend_hosted_url/api/auth/google/callback
 
 FRONTEND_URL=https://your_frontend_hosted_ur
+
+ # Note :-  Also add the hosted URI origin to Credentials -> OAuth 2.0 Client IDs -> https://console.cloud.google.com/
 
 
 
