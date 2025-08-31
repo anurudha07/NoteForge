@@ -32,48 +32,99 @@ Database  -  MongoDB + Mongoose
 
 
 ⚙️ ----- Setup -----
-1. Download zip file 
-cd noteforge
 
-2. Backend
-cd backend
-npm install
+ Download zip file
+
+Environment variable setup
 
 
-Create backend/.env:
+--  .env for frontend   --   ( Create frontend folder it at the root of frontend )
 
-MONGO_URI=your_mongodb_connection
-JWT_SECRET=your_jwt_secret
-PORT=5000
+PORT=4000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+JWT_EXPIRES_IN=2d
+
+# SMTP (Email Service)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+FROM_EMAIL=your_email@gmail.com
+
+# Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_CALLBACK_URL=http://localhost:4000/api/auth/google/callback
+
+# Frontend URL
+FRONTEND_URL=http://localhost:3000
 
 
-Run backend:
 
-npm run server
+--  .env for frontend   --   ( Create frontend folder it at the root of frontend )
 
-3. Frontend
-cd ../frontend
-npm install
+NEXT_PUBLIC_API_BASE=http://localhost:your_port/api
+NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:your_port/api/auth/google
 
 
-Create frontend/.env:
+    # Frontend Initial Commands -
+       cd frontend
+       npm i && npm run build
+       npm run dev
 
-NEXT_PUBLIC_API_BASE=http://localhost:5000
+    # Backend Initial Commands -
+       cd backend
+       npm i && npm run build
+       npm start
 
 
-Run frontend:
-
-npm run dev
 
 ----- 🚀 Production Build -----
-npm run build
-npm run start
+
+Frontend 
+start command:- npm i && npm run build
+run command:-   npm run dev
+
+Backend
+start command:- npm i && npm run build
+run command:-   npm start
+
+change .env setup on render
+
+ |..|..|..|..|.. Next Frontend (web services) ..|..|..|..|..
+NEXT_PUBLIC_API_BASE=https://abc.onrender.com/api
+NEXT_PUBLIC_GOOGLE_AUTH_URL=https://abc.onrender.com/api/auth/google
+
+Node Backend (web services)
+PORT=4000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret_key
+JWT_EXPIRES_IN=2d
+
+SMTP (Email Service)
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_USER=your_email@gmail.com
+SMTP_PASS=your_app_password
+FROM_EMAIL=your_email@gmail.com
+
+Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+GOOGLE_CALLBACK_URL=http://localhost:4000/api/auth/google/callback
+
+Frontend URL
+FRONTEND_URL=http://localhost:3000
+
+
 
 📦 Deployment
 
-Frontend: Vercel
+Frontend (Web Services) + Backend (Web Services) ----> Render 
 
-Backend: Render / Railway
+# Note:  You can choose any other relevant cloud options since MVP build within 2 days hence Render choosen for faster MVP deployment 
+
 
 📝 License
 
@@ -81,5 +132,3 @@ Developed by Anurudha Sarkar
 
 ```
 
-
-Developed by Anurudha Sarkar
