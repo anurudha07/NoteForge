@@ -4,7 +4,6 @@ NoteForge
 
 NoteForge is a modern, full-stack note-taking app built with Next.js and Node.js. It helps users create, organize, and manage notes securely in a responsive and elegant interface.
 
----
 
 ```
 
