@@ -8,7 +8,7 @@ import Image from 'next/image';
 export default function SignUpPage() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [status, setStatus] = useState(''); // combined status (e.g., "email is required name is required")
+  const [status, setStatus] = useState(''); 
   const [emailErr, setEmailErr] = useState('');
   const [nameErr, setNameErr] = useState('');
   const [loading, setLoading] = useState(false);
@@ -17,20 +17,17 @@ export default function SignUpPage() {
   const validateEmailSimple = (v: string) => /^\S+@\S+\.\S+$/.test(v.trim());
 
   const sendOtp = async () => {
-    // Clear previous errors/status
     setStatus('');
     setEmailErr('');
     setNameErr('');
 
-    // Collect missing/invalid messages in exact lowercase format requested
     const missing: string[] = [];
 
     if (!email.trim()) {
       missing.push('email is required');
 
     } else if (!validateEmailSimple(email)) {
-      // If you want an invalid format message, add it (keeps lowercase style)
-      missing.push('Email is required'); // keep the same message as requested, or change to 'enter valid email'
+      missing.push('Email is required'); 
  
     }
 
@@ -40,12 +37,10 @@ export default function SignUpPage() {
     }
 
     if (missing.length) {
-      // Show the combined message exactly as you asked (space-separated)
       setStatus(missing.join(' '));
-      return; // stop, don't call backend
+      return; 
     }
 
-    // All good -> call backend
     setLoading(true);
     try {
       const base = process.env.NEXT_PUBLIC_API_BASE || 'http://localhost:5000';
@@ -125,7 +120,7 @@ export default function SignUpPage() {
             <Link href="/signin" className="text-primary underline">Sign in</Link>
           </p>
 
-          {/* Combined status message (exact format requested) */}
+          {/* OR Divider & google */}
           {status && <p className="form-status text-red-600 mt-2">{status}</p>}
 
           <div className="form-divider" aria-hidden>

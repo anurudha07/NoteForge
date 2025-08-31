@@ -17,26 +17,20 @@ export default function SignInPage() {
   setLoading(true);
 
   try {
-    // capture the response explicitly
     const res = await axios.post(
       `${process.env.NEXT_PUBLIC_API_BASE}/auth/send-otp`,
       { email },
-      // optional: ensure axios throws only on network error; we still check status below
       { validateStatus: () => true }
     );
 
-    // Debug logging — remove in prod
     console.log('sendOtp response', res.status, res.data);
 
     if (res.status === 200) {
-      // success -> redirect to verify
       router.push(`/signup/verify?email=${encodeURIComponent(email)}`);
     } else {
-      // not 200 -> show message from server (e.g., 404 User not found)
       setStatus(res.data?.message || 'Failed to send OTP');
     }
   } catch (err: unknown) {
-    // network/axios-level error
     if (axios.isAxiosError(err)) {
       console.error('sendOtp axios error', err.response?.status, err.response?.data);
       setStatus(err.response?.data?.message ?? 'Failed to send OTP');
