@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import Cookies from 'js-cookie';
 import { useSearchParams, useRouter } from 'next/navigation';
 import Image from 'next/image';
@@ -23,11 +23,15 @@ export default function VerifyPage() {
     setErr('');
     if (!otp.trim()) return showTempMessage(setErr, 'Enter OTP');
     try {
-      const res = await axios.post(`${process.env.NEXT_PUBLIC_API_BASE}/auth/verify-otp`, { email, otp });
+      const res = await axios.post<{ token: string }>(
+        `${process.env.NEXT_PUBLIC_API_BASE}/auth/verify-otp`,
+        { email, otp }
+      );
       Cookies.set('token', res.data.token, { expires: 7 });
       router.push('/dashboard');
-    } catch (err: any) {
-      showTempMessage(setErr, err?.response?.data?.message || 'Verification failed');
+    } catch (error: unknown) {
+      const axiosErr = error as AxiosError<{ message?: string }>;
+      showTempMessage(setErr, axiosErr.response?.data?.message || 'Verification failed');
     }
   };
 
@@ -38,8 +42,9 @@ export default function VerifyPage() {
     try {
       await axios.post(`${process.env.NEXT_PUBLIC_API_BASE}/auth/resend-otp`, { email });
       showTempMessage(setStatus, 'OTP has been resent to your email.');
-    } catch (err: any) {
-      showTempMessage(setErr, err?.response?.data?.message || 'Failed to resend OTP');
+    } catch (error: unknown) {
+      const axiosErr = error as AxiosError<{ message?: string }>;
+      showTempMessage(setErr, axiosErr.response?.data?.message || 'Failed to resend OTP');
     } finally {
       setLoading(false);
     }
@@ -58,11 +63,12 @@ export default function VerifyPage() {
             className="object-contain"
           />
           <span className="text-xl font-bold text-blue-600">NoteForge</span>
-
         </div>
 
         {/* Heading */}
-        <div className="text-2xl h-page-title"><h2 >Verify Otp</h2></div>
+        <div className="text-2xl h-page-title">
+          <h2>Verify OTP</h2>
+        </div>
         <p className="p-subtitle mt-1 text-center md:text-left">
           We’ve sent a One Time Password to <span className="font-semibold">{email}</span>
         </p>
@@ -84,7 +90,9 @@ export default function VerifyPage() {
             Didn&apos;t receive OTP?{' '}
             <span
               onClick={resendOtp}
-              className={`cursor-pointer underline text-primary hover:text-primary-dark ${loading ? 'opacity-50 pointer-events-none' : ''}`}
+              className={`cursor-pointer underline text-primary hover:text-primary-dark ${
+                loading ? 'opacity-50 pointer-events-none' : ''
+              }`}
             >
               {loading ? 'Resending...' : 'Resend OTP'}
             </span>
