@@ -1,134 +1,85 @@
- ExpenX
+NoteForge 
+
 ---
-NoteForge is a modern, full-stack note-taking application built with Next.js and Node.js. It allows users to create, manage, and organize their notes securely in an elegant, responsive interface. Designed for speed, simplicity, and scalability, NoteForge is your personal productivity hub.
+
+NoteForge is a modern, full-stack note-taking app built with Next.js and Node.js. It helps users create, organize, and manage notes securely in a responsive and elegant interface.
+
 ---
 
-✨ Features
+✨ Features -----
 
-✅ Secure User Authentication (JWT-based)
+✅ Secure user authentication (JWT-based)
 
-✅ Create, Edit, and Delete Notes
+✅ Create and delete notes
 
-✅ Responsive UI optimized for all devices
+✅ Email OTP verification & google sigin at ease.
 
-✅ Protected Routes for authenticated users
+✅ Persistent login with cookies
 
-✅ Persistent Login using cookies
+✅ Protected routes for authenticated users
 
-✅ Email OTP Verification for signup
+✅ Responsive and minimal UI for quick MVP development
 
-✅ Minimal, Modern Design
----
 ```
-🛠 Tech Stack
-Frontend
 
-Next.js 15 (App Router + Turbopack)
+🛠 ----- Tech Stack -----
 
-React Hooks
+Frontend  -  Next.js 15 + TypeScript + Tailwind CSS + 
 
-Tailwind CSS for styling
+Backend   -  Node + Express.js
 
-Axios for API calls
+Database  -  MongoDB + Mongoose
 
-js-cookie for managing tokens
 
-Backend
-
-Node.js
-
-Express.js
-
-MongoDB + Mongoose
-
-JWT (JSON Web Tokens) for authentication
-
-bcrypt for password hashing
-
-📂 Project Structure
-NoteForge/
-│
-├── backend/               # Express.js backend
-│   ├── models/            # Mongoose models
-│   ├── routes/            # API routes
-│   ├── controllers/       # Business logic
-│   └── server.js          # Entry point
-│
-├── frontend/              # Next.js frontend
-│   ├── src/app/           # App Router pages
-│   ├── components/        # UI components
-│   ├── styles/            # Global and custom styles
-│   └── package.json
-│
-└── README.md
-
-⚙️ Setup Instructions
-1. Clone the repository
-git clone https://github.com/your-username/noteforge.git
+⚙️ ----- Setup -----
+1. Download zip file 
 cd noteforge
 
-2. Backend Setup
+2. Backend
 cd backend
 npm install
 
 
-Create a .env file inside the backend folder:
+Create backend/.env:
 
 MONGO_URI=your_mongodb_connection
 JWT_SECRET=your_jwt_secret
 PORT=5000
 
 
-Start the backend:
+Run backend:
 
 npm run server
 
-3. Frontend Setup
+3. Frontend
 cd ../frontend
 npm install
 
 
-Create a .env file inside the frontend folder:
+Create frontend/.env:
 
 NEXT_PUBLIC_API_BASE=http://localhost:5000
 
 
-Start the frontend:
+Run frontend:
 
 npm run dev
 
-🚀 Run in Production
-
-Build the frontend for production:
-
+----- 🚀 Production Build -----
 npm run build
 npm run start
 
-🔐 Authentication Flow
-
-Signup → Email OTP verification → Dashboard access
-
-JWT stored in cookies for persistent login
-
-Protected routes for authenticated users
-
-📸 Screenshots
-
-(Add your UI screenshots here – Dashboard, Login, Signup, etc.)
-
 📦 Deployment
 
-Deploy easily on:
+Frontend: Vercel
 
-Frontend → Vercel
-
-Backend → Render
- / Railway
+Backend: Render / Railway
 
 📝 License
-
-MIT License
 
 Developed by Anurudha Sarkar
 
 ```
+
+
+Developed by Anurudha Sarkar
