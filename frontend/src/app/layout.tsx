@@ -3,7 +3,10 @@ import { ReactNode } from 'react';
 
 export const metadata = {
   title: 'NoteForge',
-  description: 'Simple & secured notes taking app'
+  description: 'Simple & secured notes taking app',
+  icons: {
+    icon: '/assets/App_logo.png' 
+  }
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
