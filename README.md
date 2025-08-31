@@ -11,9 +11,11 @@ NoteForge is a modern, full-stack note-taking app built with Next.js and Node.js
 
     Secure user authentication (JWT-based)
 
-    Create and delete notes
-
     Email OTP verification & google sigin at ease.
+
+    Create and delete notes with user details
+
+    Proper form Validation 
 
     Persistent login with cookies
 
