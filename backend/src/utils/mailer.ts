@@ -4,19 +4,19 @@ dotenv.config();
 
 
 const transporter = nodemailer.createTransport({
-host: process.env.SMTP_HOST,
-port: Number(process.env.SMTP_PORT || 587),
-secure: false,
-auth: {
-user: process.env.SMTP_USER,
-pass: process.env.SMTP_PASS
-}
+  host: process.env.SMTP_HOST,
+  port: Number(process.env.SMTP_PORT || 587),
+  secure: false,
+  auth: {
+    user: process.env.SMTP_USER,
+    pass: process.env.SMTP_PASS
+  }
 });
 
 
 export const sendOTPEmail = async (to: string, otp: string) => {
-const from = process.env.FROM_EMAIL || 'anurudhs567@gmail.com';
-const html = `
+  const from = process.env.FROM_EMAIL || 'anurudhs567@gmail.com';
+  const html = `
   <div style="font-family: Arial, sans-serif; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #e0e0e0; border-radius: 10px; background-color: #f9f9f9;">
   <h2 style="text-align: center; color: #333;">NoteForge Verification</h2>
   <p>Hi there,</p>
@@ -33,5 +33,5 @@ const html = `
 </div>
 
 `;
-await transporter.sendMail({ from, to, subject: 'One Time Password (OTP) for your Account on NoteForge', html });
+  await transporter.sendMail({ from, to, subject: 'One Time Password (OTP) for your Account on NoteForge', html });
 };

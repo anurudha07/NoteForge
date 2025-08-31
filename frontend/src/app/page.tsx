@@ -5,6 +5,7 @@ import Lottie from 'lottie-react';
 import developerAnimation from '../../public/assets/developer-animation.json';
 import Link from 'next/link';
 import Image from 'next/image';
+
 export default function Home() {
   return (
     <div className="w-full min-h-screen bg-white flex flex-col">
@@ -17,7 +18,6 @@ export default function Home() {
               alt="NoteForge"
               width={54}
               height={34}
-  
             />
             <span className="text-sm">NoteForge</span>
           </div>
@@ -25,7 +25,10 @@ export default function Home() {
       </header>
 
       {/* Hero Section  */}
-      <main className="flex-1 text-center max-w-3xl mx-auto mt-16 px-4">
+      <main
+        className="flex-1 text-center max-w-3xl mx-auto px-4"
+        style={{ marginTop: '1.2rem' }} 
+      >
         <motion.h1
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,6 +43,7 @@ export default function Home() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.15 }}
           className="text-gray-600 text-sm"
+          style={{ marginTop: '0.5rem' }} 
         >
           <p className="mb-3">
             A clean, minimal yet secured note taking app. Manage your notes effortlessly and stay organized across all devices.
@@ -63,7 +67,12 @@ export default function Home() {
 
         {/* Lottie SVG */}
         <div className="mt-1 flex justify-center pb-12">
-          <Lottie animationData={developerAnimation} loop autoplay style={{ width: 260, height: 260 }} />
+          <Lottie
+            animationData={developerAnimation}
+            loop
+            autoplay
+            style={{ width: 260, height: 260 }}
+          />
         </div>
       </main>
     </div>

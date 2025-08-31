@@ -1,4 +1,4 @@
-import type{ Request, Response } from 'express';
+import type { Request, Response } from 'express';
 import jwt, { type SignOptions } from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import crypto from 'crypto';
@@ -75,43 +75,43 @@ export const sendOtpSignup = async (req: Request, res: Response) => {
 
 
 export const verifyOtp = async (req: Request, res: Response) => {
-const { email, otp } = req.body;
-if (!email || !otp) return res.status(400).json({ message: 'Missing fields' });
-const user = await User.findOne({ email });
-if (!user || !user.otp || !user.otpExpires) return res.status(400).json({ message: 'OTP not requested' });
-if (user.otpExpires < new Date()) return res.status(400).json({ message: 'OTP expired' });
-const hashed = crypto.createHash('sha256').update(otp).digest('hex');
-if (hashed !== user.otp) return res.status(400).json({ message: 'Invalid OTP' });
-user.isVerified = true;
-user.otp = undefined;
-user.otpExpires = undefined;
-await user.save();
-const token = signJwt({ 
-  id: user._id.toString(), 
-  name: user.name ?? 'No Name', 
-  email: user.email ?? 'noemail@example.com' 
-});
-return res.json({ token, user: { email: user.email, name: user.name } });
+  const { email, otp } = req.body;
+  if (!email || !otp) return res.status(400).json({ message: 'Missing fields' });
+  const user = await User.findOne({ email });
+  if (!user || !user.otp || !user.otpExpires) return res.status(400).json({ message: 'OTP not requested' });
+  if (user.otpExpires < new Date()) return res.status(400).json({ message: 'OTP expired' });
+  const hashed = crypto.createHash('sha256').update(otp).digest('hex');
+  if (hashed !== user.otp) return res.status(400).json({ message: 'Invalid OTP' });
+  user.isVerified = true;
+  user.otp = undefined;
+  user.otpExpires = undefined;
+  await user.save();
+  const token = signJwt({
+    id: user._id.toString(),
+    name: user.name ?? 'No Name',
+    email: user.email ?? 'noemail@example.com'
+  });
+  return res.json({ token, user: { email: user.email, name: user.name } });
 
 };
 
 
 export const resendOtp = async (req: Request, res: Response) => {
-const { email } = req.body;
-if (!email) return res.status(400).json({ message: 'Email required' });
-const user = await User.findOne({ email });
-if (!user) return res.status(404).json({ message: 'User not found' });
-const otp = Math.floor(100000 + Math.random() * 900000).toString();
-const hashed = crypto.createHash('sha256').update(otp).digest('hex');
-user.otp = hashed;
-user.otpExpires = new Date(Date.now() + 1000 * 60 * 10);
-await user.save();
-try {
-await sendOTPEmail(email, otp);
-return res.json({ message: 'OTP resent' });
-} catch (err) {
-return res.status(500).json({ message: 'Failed to send OTP' });
-}
+  const { email } = req.body;
+  if (!email) return res.status(400).json({ message: 'Email required' });
+  const user = await User.findOne({ email });
+  if (!user) return res.status(404).json({ message: 'User not found' });
+  const otp = Math.floor(100000 + Math.random() * 900000).toString();
+  const hashed = crypto.createHash('sha256').update(otp).digest('hex');
+  user.otp = hashed;
+  user.otpExpires = new Date(Date.now() + 1000 * 60 * 10);
+  await user.save();
+  try {
+    await sendOTPEmail(email, otp);
+    return res.json({ message: 'OTP resent' });
+  } catch (err) {
+    return res.status(500).json({ message: 'Failed to send OTP' });
+  }
 };
 
 

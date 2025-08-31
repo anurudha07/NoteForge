@@ -368,3 +368,4 @@ select:focus {
 
 /* defensive re-assertion in case of a global  */
 body .notes-grid { display: grid !important; }
+
