@@ -84,7 +84,7 @@ NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:your_port/api/auth/google
 
 Frontend 
 start command:- npm i && npm run build
-run command:-   npm run dev
+run command:-   npm start
 
 Backend
 start command:- npm i && npm run build
