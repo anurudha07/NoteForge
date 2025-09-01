@@ -90,6 +90,15 @@ NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:your_port/api/auth/google
             -> https://console.cloud.google.com/
 
 
+⚙️ ----- Testing -----
+
+Levearged Postman for API testing
+
+You can get direct access to my API routes testing through the link below:
+
+https://anurudhasarkar.postman.co/workspace/Anurudha-Sarkar's-Workspace~d643d6d9-ad4d-4e60-8a24-b6da2aaffdfc
+/collection/45057045-2fae7495-26d2-4533-960e-0785f46756bb?action=share&creator=45057045
+
 
 ----- 🚀 Production Build -----
 
