@@ -139,7 +139,9 @@ Frontend (Web Services) + Backend (Web Services) ----> Render
          hence Render choosen for faster MVP deployment 
 
 
-📝 Developed by Anurudha Sarkar
+📝 Developed
+
+   --  by Anurudha Sarkar  --
 
 ```
 
