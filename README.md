@@ -80,7 +80,8 @@ NEXT_PUBLIC_GOOGLE_AUTH_URL=http://localhost:your_port/api/auth/google
        npm i && npm run build
        npm start
 
- # Note :-  Also add the hosted URI origin to Credentials -> OAuth 2.0 Client IDs -> https://console.cloud.google.com/
+ # Note :-  Also add the hosted URI origin to Credentials -> OAuth 2.0 Client IDs 
+            -> https://console.cloud.google.com/
 
 
 
@@ -125,7 +126,8 @@ GOOGLE_CALLBACK_URL=https://your_frontend_hosted_url/api/auth/google/callback
 
 FRONTEND_URL=https://your_frontend_hosted_ur
 
- # Note :-  Also add the hosted URI origin to Credentials -> OAuth 2.0 Client IDs -> https://console.cloud.google.com/
+ # Note :-  Also add the hosted URI origin to Credentials -> OAuth 2.0 Client IDs 
+            -> https://console.cloud.google.com/
 
 
 
@@ -133,12 +135,11 @@ FRONTEND_URL=https://your_frontend_hosted_ur
 
 Frontend (Web Services) + Backend (Web Services) ----> Render 
 
-# Note:  You can choose any other relevant cloud options since MVP build within 2 days hence Render choosen for faster MVP deployment 
+# Note:  You can choose any other relevant cloud options since MVP build within 2 days 
+         hence Render choosen for faster MVP deployment 
 
 
-📝 Developer
-
-Developed by Anurudha Sarkar
+📝 Developed by Anurudha Sarkar
 
 ```
 
