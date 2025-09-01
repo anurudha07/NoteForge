@@ -136,7 +136,7 @@ Frontend (Web Services) + Backend (Web Services) ----> Render
 # Note:  You can choose any other relevant cloud options since MVP build within 2 days hence Render choosen for faster MVP deployment 
 
 
-📝 License
+📝 Developer
 
 Developed by Anurudha Sarkar
 
