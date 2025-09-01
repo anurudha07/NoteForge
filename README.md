@@ -28,6 +28,7 @@ NoteForge is a modern, full-stack note-taking app built with Next.js and Node.js
     Responsive and minimal UI for quick MVP development
 
 
+
 🛠 ----- Tech Stack -----
 
 Frontend  -  Next.js 15 + TypeScript + Tailwind CSS  
@@ -35,6 +36,7 @@ Frontend  -  Next.js 15 + TypeScript + Tailwind CSS
 Backend   -  Node + TypeScript
 
 Database  -  MongoDB + Mongoose
+
 
 
 ⚙️ ----- Setup -----
@@ -141,6 +143,7 @@ Frontend (Web Services) + Backend (Web Services) ----> Render
 
 # Note:  You can choose any other relevant cloud options since MVP build within 2 days 
          hence Render choosen for faster MVP deployment 
+
 
 
 📝 Developed
