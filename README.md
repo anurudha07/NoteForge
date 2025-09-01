@@ -7,7 +7,7 @@ NoteForge is a modern, full-stack note-taking app built with Next.js and Node.js
 
 ```
 
--------- # Note:   Projects are hosted on Render free tier, which may take up to 50 seconds 
+-------- # Note:  MVP hosted on Render free tier, which may take up to 50 seconds 
           to load initially due to server cold start. --------
 
 
