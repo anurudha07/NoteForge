@@ -28,7 +28,7 @@ NoteForge is a modern, full-stack note-taking app built with Next.js and Node.js
 
 Frontend  -  Next.js 15 + TypeScript + Tailwind CSS  
 
-Backend   -  Node + Express.js 
+Backend   -  Node + TypeScript
 
 Database  -  MongoDB + Mongoose
 
